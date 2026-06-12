@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: Reserva de salas - Alura
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/reserva_salas}
+    username: ${DB_USERNAME:reserva_user}
+    password: ${DB_PASSWORD:reserva_password}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
