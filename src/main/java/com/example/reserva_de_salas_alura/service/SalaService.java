@@ -1,6 +1,7 @@
 package com.example.reserva_de_salas_alura.service;
 
 import com.example.reserva_de_salas_alura.entity.Sala;
+import com.example.reserva_de_salas_alura.exception.SalaNaoEncontradaException;
 import com.example.reserva_de_salas_alura.repository.SalaRepository;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ public class SalaService {
 
     public Sala buscarSalaById(Long id) {
         return salaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Sala não encontrada"));
+                .orElseThrow(SalaNaoEncontradaException::new);
     }
 
     public List<Sala> buscarSalasList() {

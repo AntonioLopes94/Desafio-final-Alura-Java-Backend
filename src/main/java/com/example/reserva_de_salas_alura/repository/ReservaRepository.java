@@ -1,6 +1,9 @@
 package com.example.reserva_de_salas_alura.repository;
 
 import com.example.reserva_de_salas_alura.entity.Reserva;
+import com.example.reserva_de_salas_alura.enums.StatusReserva;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -21,4 +24,12 @@ public interface ReservaRepository extends JpaRepository<Reserva, Long> {
             LocalDateTime limiteInicio
     );
 
+
+    Page<Reserva> findBySalaIdAndStatusNotAndDataInicioLessThanAndDataFimGreaterThan(
+            Long salaId,
+            StatusReserva statusIgnorado,
+            LocalDateTime fimConsultado,
+            LocalDateTime inicioConsultado,
+            Pageable pageable
+    );
 }
